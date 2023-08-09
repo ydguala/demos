@@ -1,0 +1,56 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  labels:
+    app: troubleshootme-1
+    app.kubernetes.io/component: troubleshootme-1
+    app.kubernetes.io/instance: troubleshootme-1
+  name: troubleshootme-1
+spec:
+  replicas: 1
+  selector:
+    deploymentconfig: troubleshootme-1
+  strategy:
+    activeDeadlineSeconds: 21600
+    resources: {}
+    rollingParams:
+      intervalSeconds: 1
+      maxSurge: 25%
+      maxUnavailable: 25%
+      timeoutSeconds: 600
+      updatePeriodSeconds: 1
+    type: Rolling
+  template:
+    metadata:
+      labels:
+        deploymentconfig: troubleshootme-1
+    spec:
+      containers:
+      - env:
+        - name: MYSQL_DATABASE
+          value: troubleshootme-1
+        - name: MYSQL_PASSWORD
+          value: troubleshootme-1
+        - name: MYSQL_ROOT_PASSWORD
+          value: troubleshootme-1
+        - name: MYSQL_USER
+          value: troubleshootme-1
+        image: registry.access.redhat.com/rhscl/mysql-57-rhel7@sha256:9a781abe7581cc141e14a7e404ec34125b3e89c008b14f4e7b41e094fd3049fe
+        imagePullPolicy: IfNotPresent
+        name: troubleshootme-1
+        ports:
+        - containerPort: 3306
+          protocol: TCP
+        resources:
+          requests:
+            memory: "128Gi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+  test: false
