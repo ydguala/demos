@@ -2,7 +2,7 @@ FROM docker.io/openjdk:8
 COPY . /usr/src/myapp
 WORKDIR /usr/src/myapp
 RUN javac SimpleJmx.java
-RUN jar cfm SimpleJmx.jar manifest.mf SimpleJmx.class SimpleJmx\$Simple.class SimpleJmx\$SimpleMBean.class
+RUN jar cfm SimpleJmx.jar manifest.mf *
 
 CMD ["java", \
 "-Dcom.sun.management.jmxremote=true", \
