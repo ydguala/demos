@@ -25,6 +25,7 @@ spec:
       labels:
         deploymentconfig: troubleshootme-1
     spec:
+      nodeName: worker2
       containers:
       - env:
         - name: MYSQL_DATABASE
