@@ -45,8 +45,6 @@ spec:
           requests:
             memory: "128Gi"
             cpu: "250m"
-          limits:
-            cpu: "500m"
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
