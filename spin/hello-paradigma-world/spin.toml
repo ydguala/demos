@@ -1,0 +1,16 @@
+spin_manifest_version = "1"
+authors = ["daniel"]
+description = "spin test"
+name = "hello-paradigma-world"
+trigger = { type = "http", base = "/" }
+version = "0.1.0"
+
+[[component]]
+id = "hello-paradigma-world"
+source = "target/wasm32-wasi/release/hello_paradigma_world.wasm"
+allowed_http_hosts = []
+[component.trigger]
+route = "/paradigma"
+[component.build]
+command = "cargo build --target wasm32-wasi --release"
+watch = ["src/**/*.rs", "Cargo.toml"]
