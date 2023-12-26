@@ -8,7 +8,7 @@ metadata:
 spec:
   runtimeClassName: wasmtime-spin-v0-8-0
   containers:
-  - image: pdtacrkvmpoc.azurecr.io/ydguala/hello-paradigma-world-provenance:latest
+  - image: poc.azurecr.io/ydguala/hello-paradigma-world-provenance:latest
     imagePullPolicy: Always
     name: spin-paradigma-world
     resources:
